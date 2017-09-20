@@ -10,11 +10,13 @@ import { Keg } from './keg';
       <input #name class="form-control">
       <label>Brand:</label>
       <input #brand class="form-control">
+      <label>Style:</label>
+      <input #style class="form-control">
       <label>Price:</label>
-      <input type='number' #price class="form-control">
+      <input type='number' #price class="form-control" min="1">
       <label>Alcohol Content:</label>
-      <input type='number' #alcoholContent class="form-control">
-      <button class = 'btn btn-success'(click)="submitForm(name.value, brand.value, price.value, alcoholContent.value); name.value=''; brand.value=''; price.value=''; alcoholContent.value='';">Add Keg</button>
+      <input type='number' #alcoholContent class="form-control" min="0">
+      <button class = 'btn btn-success'(click)="submitForm(name.value, brand.value, style.value, price.value, alcoholContent.value); name.value=''; brand.value=''; style.value=''; price.value=''; alcoholContent.value='';">Add Keg</button>
     </div>
   `
 })
@@ -22,11 +24,11 @@ import { Keg } from './keg';
 export class NewKegComponent {
   @Output() newKegSender = new EventEmitter();
 
-  submitForm(name: string, brand: string, price: number, alcoholContent: number) {
-    let numPrice = +price;
+  submitForm(name: string, brand: string, style: string, price: number, alcoholContent: number) {
+    let numPrice =+price;
     let numAC = +alcoholContent;
 
-    let newKegToAdd : Keg = new Keg(name, brand, numPrice, numAC);
+    let newKegToAdd : Keg = new Keg(name, brand, style, numPrice, numAC);
     this.newKegSender.emit(newKegToAdd);
   }
 }

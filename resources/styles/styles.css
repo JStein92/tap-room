@@ -1,0 +1,18 @@
+.cheap{
+  background-color: #e0ffe8;
+}
+.medium{
+background-color: #ffffe0;
+}
+.expensive{
+background-color: #fce0db;
+}
+.progress{
+height: 3em;
+vertical-align:middle;
+
+}
+.progress-bar p{
+  font-size: 2em;
+  margin-top: 10px;
+}

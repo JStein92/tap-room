@@ -6,7 +6,8 @@ import { Keg } from './keg';
   template: `
     <div class="container">
      <h1>Tap Room</h1>
-      <keg-list [childKegList]="masterKegList" (clickSender)="editKeg($event)"></keg-list>
+      <keg-list [childKegList]="masterKegList" (clickSender)="editKeg($event)" (pourSender)="pour($event)" (growlerSender)="growler($event)" (largeGrowlerSender)="largeGrowler($event)">
+      </keg-list>
       <edit-keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender) = "finishedEditing()"></edit-keg>
       <new-keg (newKegSender)="addKeg($event)"></new-keg>
 
@@ -19,9 +20,11 @@ export class AppComponent {
   selectedKeg = null;
 
   masterKegList: Keg[] = [
-    new Keg("Coors Lite", "Coors", 25.00, 4),
-    new Keg("Mack's Hoppy Stuff", "Mack&Jacks", 40.00, 7),
-    new Keg("Busch Zero", "Busch", 13.50, 1.5)
+    new Keg("Coors Lite", "Coors", "Lager", 2.00, 6),
+    new Keg("Mack's Hoppy Stuff", "Mack&Jacks", "IPA", 4.00, 9),
+    new Keg("Busch Zero", "Busch", "Lager", 10, 3.5),
+    new Keg("Red's Ale", "Red's", "Red", 6.00, 6),
+    new Keg("Cream Stout", "Ninkasi", "Stout", 5.50, 6.5)
   ]
 
   editKeg(keg) {
@@ -35,4 +38,18 @@ export class AppComponent {
   addKeg(newKegFromChild: Keg) {
     this.masterKegList.push(newKegFromChild);
   }
+
+  pour(keg) {
+    keg.pour();
+  }
+
+  growler(keg) {
+    keg.growler();
+  }
+
+  largeGrowler(keg) {
+    keg.largeGrowler();
+  }
+
+
 }

@@ -15,10 +15,10 @@ import { Keg } from './keg';
      <input type = 'text' class = 'form-control' [(ngModel)]="childSelectedKeg.brand">
 
      <label for = 'price'>Price:</label>
-     <input type = 'number' class = 'form-control' [(ngModel)]="childSelectedKeg.price">
+     <input type = 'number' class = 'form-control' min="1" [(ngModel)]="childSelectedKeg.price">
 
      <label for = 'alcoholContent'>Alcohol Content:</label>
-     <input type = 'number' class = 'form-control' [(ngModel)]="childSelectedKeg.alcoholContent">
+     <input type = 'number' class = 'form-control' min="0" [(ngModel)]="childSelectedKeg.alcoholContent">
 
      <button type = 'button' class = 'btn btn-success' (click) = "doneButtonClicked()">Done</button>
 
