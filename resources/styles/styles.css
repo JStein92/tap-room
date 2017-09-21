@@ -12,11 +12,11 @@ background-color: #ffffe0;
 background-color: #fce0db;
 }
 .progress{
-height: 3em;
-vertical-align:middle;
+height: 2em;
+
 }
 .progress-bar p{
-  font-size: 2em;
+  font-size: 1em;
   margin-top: 10px;
 }
 .deleteBtn{
@@ -34,12 +34,17 @@ vertical-align:middle;
 
 .kegIcon{
   background-image: url("../img/keg_icon.png");
-  width: 100px;
+  width: 120px;
   height: 120px;
   background-size: contain;
   background-repeat: no-repeat;
-  border: 1px solid black;
+
 }
+.kegContainer{
+  margin-right: 30px;
+
+}
+
 
 #moneh {
   float: right;
@@ -64,18 +69,37 @@ vertical-align:middle;
 }
 #newKegFormInternal{
   padding: 30px;
-
 }
-
+.ABV{
+  margin: 0px;
+  padding: 0px;
+}
+.progress-abv{
+  width: 20%;
+  margin-bottom: 10px;
+}
+.vertical-container{
+  padding-top: 25px;
+  padding-left: 13px;
+}
 .vertical {
-  width: 100px;
-  height: 40px;
+  width: 93px;
+  height: 75px;
   -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
   transform: rotate(-90deg);
+  opacity: .7;
+  background-color: rgba(0, 0, 0, 0);
 }
-.vertical {
-  box-shadow: inset 0px 4px 6px #ccc;
+
+.pourButtons {
+  margin-left: 1px;
 }
-.progress-bar {
-  box-shadow: inset 0px 4px 6px rgba(100,100,100,0.6);
+
+.pourButtons button {
+  margin-right: 10px;
+}
+
+.abvbolded {
+  font-size: 1.3em;
+  font-weight: bold;
 }
