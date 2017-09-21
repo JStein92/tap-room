@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'till-income',
   template: `
-    <h3 id="moneh">\${{runningTotal.toFixed(2)}}</h3>
+    <h3 id="moneh">Till - \${{runningTotal.toFixed(2)}}</h3>
   `
 })
 

@@ -1,7 +1,44 @@
 body{
 font-family: 'Cinzel', serif;
+background-color: #fbf9ff;
+}
+select{
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.jumbotron{
+  background-image: url("../img/headerBG.jpg");
+  background-size: cover;
+  padding-bottom: 150px;
+  padding-top: 150px;
+  background-position:top;
+text-align: center;
+margin-bottom: 15px;
+}
+.jumbotron h1{
+  color: #f4f4f4;
+  font-size: 20em;
+  text-shadow: 4px 4px 5px black;
+  letter-spacing: 20px;
 
 }
+.jumbotron h2{
+  color: #f4f4f4;
+  font-size: 2em;
+  text-shadow: 4px 4px 5px black;
+  letter-spacing: 20px;
+
+}
+.jumbotron h4{
+  color: #f4f4f4;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 3px black;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+
+}
+
 .cheap{
   background-color: #e0ffe8;
 }
@@ -13,6 +50,12 @@ background-color: #fce0db;
 }
 .progress{
 height: 2em;
+
+}
+#newKeg{
+  font-size: 1.2em;
+  background-color: #e2e0e0;
+  margin-bottom: 5px;
 
 }
 .progress-bar p{
@@ -48,6 +91,7 @@ height: 2em;
 
 #moneh {
   float: right;
+  margin-top:0px;
 }
 #editKeg{
   position: fixed;

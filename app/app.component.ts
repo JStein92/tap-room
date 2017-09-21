@@ -5,13 +5,18 @@ import { DatePipeComponent } from './date-time.component';
 @Component({
   selector: 'app-root',
   template: `
+
+  <div class = "jumbotron">
+     <h1>Tap Room </h1>
+     <h4>"Every Even Minute is Happy Hour" </h4>
+     <h2><date-pipe (checkHappyHourSender) = "toggleHappyHour($event)"></date-pipe></h2>
+
+  </div>
     <div class="container">
-     <h1>Tap Room</h1>
       <till-income [runningTotal]="runningTotal"></till-income>
-      <date-pipe></date-pipe>
+
       <keg-list [childKegList]="masterKegList" [growlerDiscount] = "growlerDiscount" [lgGrowlerDiscount] = "lgGrowlerDiscount"
       [isHappyHour] = "isHappyHour" (clickSender)="editKeg($event)" (pourSender)="pour($event)" (growlerSender)="growler($event)" (largeGrowlerSender)="largeGrowler($event)"
-      (toggleHappyHourSender) = "toggleHappyHour()"
       (deleteButtonClickedSender) = "deleteButtonClicked($event)"
       (toggleShowNewKegSender) = "toggleShowNewKeg()">
       </keg-list>
@@ -28,6 +33,7 @@ export class AppComponent {
   showNewKegForm : boolean = false;
 
   selectedKeg = null;
+
   isHappyHour : boolean = false;
 
   growlerDiscount = 1.8;
@@ -53,16 +59,15 @@ export class AppComponent {
     if (this.showNewKegForm === false){
       this.showNewKegForm = true;
     } else {
-            this.showNewKegForm = false;
+      this.showNewKegForm = false;
     }
-
   }
 
-  toggleHappyHour(){
-    if(this.isHappyHour){
-      this.isHappyHour=false;
-    } else {
-      this.isHappyHour=true;
+  toggleHappyHour(isEvenMinute){
+    if (isEvenMinute){
+      this.isHappyHour = true;
+    } else{
+      this.isHappyHour = false;
     }
   }
 

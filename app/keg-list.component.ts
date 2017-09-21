@@ -17,10 +17,7 @@ import { DatePipe } from '@angular/common';
       <option value="Lager">Lagers</option>
     </select>
 
-    <button (click) = "toggleShowNewKeg()">New Keg</button>
-
-    <label>Happy Hour</label>
-    <input type = "checkbox" (click) = "toggleHappyHour()">
+    <button (click) = "toggleShowNewKeg()" class = 'btn' id ='newKeg'>New Keg</button>
 
     <div *ngFor="let keg of childKegList | pintsRemaining:filterByPintsRemaining | kegStyle:filterByStyle" [class] = "priceColor(keg)">
       <h2>{{keg.brand}} - {{keg.name}} <button class = 'editBtn' (click)="editButtonHasBeenClicked(keg)">Edit</button> <button class = "btn btn-danger deleteBtn" (click)="deleteButtonClicked(keg)">X</button> </h2>
@@ -110,10 +107,6 @@ export class KegListComponent {
 
   deleteButtonClicked(keg : Keg){
     this.deleteButtonClickedSender.emit(keg);
-  }
-
-  toggleHappyHour(){
-    this.toggleHappyHourSender.emit();
   }
 
   pour(keg: Keg) {
