@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Keg } from './keg';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'keg-list',
   template: `
@@ -17,11 +17,30 @@ import { Keg } from './keg';
       <option value="Lager">Lagers</option>
     </select>
 
+    <button (click) = "toggleShowNewKeg()">New Keg</button>
+
+    <label>Happy Hour</label>
+    <input type = "checkbox" (click) = "toggleHappyHour()">
+
     <div *ngFor="let keg of childKegList | pintsRemaining:filterByPintsRemaining | kegStyle:filterByStyle" [class] = "priceColor(keg)">
-      <h2>{{keg.name}}</h2>
-      <h3> {{keg.brand}}</h3>
-      <h3> {{keg.style}}</h3>
-      <h3 *ngIf="keg.price">\${{keg.price.toFixed(2)}}</h3>
+      <h2>{{keg.brand}} - {{keg.name}} <button class = 'editBtn' (click)="editButtonHasBeenClicked(keg)">Edit</button> <button class = "btn btn-danger deleteBtn" (click)="deleteButtonClicked(keg)">X</button> </h2>
+
+
+
+
+      <h4>{{keg.style}}</h4>
+
+
+
+
+
+      <div class = "kegIcon">
+        <div class="progress vertical">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+            </div>
+        </div>
+      </div>
+
       <h3 *ngIf="!keg.price" class = 'bg-danger'>Not a valid price!</h3>
         <span>ABV</span>
       <div class="progress">
@@ -30,30 +49,60 @@ import { Keg } from './keg';
         aria-valuemin="0" aria-valuemax="20" [style.width]="keg.alcoholContent*5+'%'">
           <p>{{keg.alcoholContent.toFixed(2)}}%</p>
         </div>
-
       </div>
 
       <h4>{{keg.pintsRemaining}}</h4>
-      <button (click)="editButtonHasBeenClicked(keg)">Edit</button>
-      <button (click)="pour(keg)">Pour</button>
-      <button (click)="growler(keg)">Growler</button>
-      <button (click)="largeGrowler(keg)">Lg. Growler</button>
+
+      <h3 *ngIf="keg.price">
+        <div *ngIf="isHappyHour">
+
+        <button (click)="pour(keg)">Pour \${{(keg.price -1).toFixed(2)}}</button>
+        <button (click)="growler(keg)">Growler \${{((keg.price-1 )*growlerDiscount ).toFixed(2)}}</button>
+        <button (click)="largeGrowler(keg)">Lg. Growler \${{((keg.price -1)*lgGrowlerDiscount).toFixed(2)}}</button>
+
+        </div>
+        <div *ngIf="!isHappyHour">
+        <button (click)="pour(keg)">Pour \${{(keg.price).toFixed(2)}}</button>
+        <button (click)="growler(keg)">Growler \${{(keg.price*growlerDiscount).toFixed(2)}}</button>
+        <button (click)="largeGrowler(keg)">Lg. Growler \${{(keg.price*lgGrowlerDiscount).toFixed(2)}}</button>
+        </div>
+      </h3>
 
     </div>
   `
 })
 
 export class KegListComponent {
+
   @Input() childKegList: Keg[];
+  @Input() isHappyHour : boolean;
+  @Input() growlerDiscount : number;
+  @Input() lgGrowlerDiscount : number;
   @Output() clickSender = new EventEmitter();
   @Output() pourSender = new EventEmitter();
   @Output() growlerSender = new EventEmitter();
   @Output() largeGrowlerSender = new EventEmitter();
+  @Output() toggleHappyHourSender = new EventEmitter();
+  @Output() deleteButtonClickedSender = new EventEmitter();
+  @Output() toggleShowNewKegSender = new EventEmitter();
 
   filterByPintsRemaining: string = "allKegs";
   filterByStyle: string = "allStyles";
+
+  toggleShowNewKeg(){
+    this.toggleShowNewKegSender.emit();
+  }
+
   editButtonHasBeenClicked(keg: Keg) {
     this.clickSender.emit(keg);
+  }
+
+  deleteButtonClicked(keg : Keg){
+    this.deleteButtonClickedSender.emit(keg);
+  }
+
+  toggleHappyHour(){
+    this.toggleHappyHourSender.emit();
   }
 
   pour(keg: Keg) {

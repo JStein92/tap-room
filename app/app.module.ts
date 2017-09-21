@@ -7,11 +7,13 @@ import { EditKegComponent } from './edit-keg.component';
 import { NewKegComponent } from './new-keg.component';
 import { PintsRemainingPipe } from './pintsRemaining.pipe';
 import { KegStylePipe } from './kegStyle.pipe';
-
+import { DatePipe } from '@angular/common';
+import {DatePipeComponent} from './date-time.component';
+import { TillIncomeComponent } from './till-income.component';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, KegListComponent, EditKegComponent, NewKegComponent, PintsRemainingPipe, KegStylePipe],
+  declarations: [ AppComponent, KegListComponent, EditKegComponent, NewKegComponent, PintsRemainingPipe, KegStylePipe, DatePipeComponent, TillIncomeComponent],
   bootstrap: [ AppComponent ]
 })
 

@@ -4,23 +4,27 @@ import { Keg } from './keg';
 @Component({
   selector:'edit-keg',
   template: `
-  <div *ngIf="childSelectedKeg">
+  <div *ngIf="childSelectedKeg" id="editKeg">
 
-    <h3>Edit Keg</h3>
+    <div id = "editKegInternal">
+      <h3>Edit Keg</h3>
 
-     <label for = 'name'>Name:</label>
-     <input type = 'text' class = 'form-control' [(ngModel)]="childSelectedKeg.name">
+       <label for = 'name'>Name:</label>
+       <input type = 'text' class = 'form-control' [(ngModel)]="childSelectedKeg.name">
 
-     <label for = 'brand'>Brand:</label>
-     <input type = 'text' class = 'form-control' [(ngModel)]="childSelectedKeg.brand">
+       <label for = 'brand'>Brand:</label>
+       <input type = 'text' class = 'form-control' [(ngModel)]="childSelectedKeg.brand">
 
-     <label for = 'price'>Price:</label>
-     <input type = 'number' class = 'form-control' min="1" [(ngModel)]="childSelectedKeg.price">
+       <label for = 'price'>Price:</label>
+       <input type = 'number' class = 'form-control' min="1" [(ngModel)]="childSelectedKeg.price">
 
-     <label for = 'alcoholContent'>Alcohol Content:</label>
-     <input type = 'number' class = 'form-control' min="0" [(ngModel)]="childSelectedKeg.alcoholContent">
+       <label for = 'alcoholContent'>Alcohol Content:</label>
+       <input type = 'number' class = 'form-control' min="0" [(ngModel)]="childSelectedKeg.alcoholContent">
 
-     <button type = 'button' class = 'btn btn-success' (click) = "doneButtonClicked()">Done</button>
+       <button type = 'button' class = 'btn btn-success' (click) = "doneButtonClicked()">Done</button>
+    </div>
+
+
 
   </div>
 

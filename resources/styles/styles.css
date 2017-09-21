@@ -1,3 +1,7 @@
+body{
+font-family: 'Cinzel', serif;
+
+}
 .cheap{
   background-color: #e0ffe8;
 }
@@ -10,9 +14,68 @@ background-color: #fce0db;
 .progress{
 height: 3em;
 vertical-align:middle;
-
 }
 .progress-bar p{
   font-size: 2em;
   margin-top: 10px;
+}
+.deleteBtn{
+  /*background: red;
+  border: 1px solid black;
+  padding-right: 10px;
+  padding-left: 10px;*/
+  float: right;
+
+}
+.editBtn{
+  font-size: .5em;
+
+}
+
+.kegIcon{
+  background-image: url("../img/keg_icon.png");
+  width: 100px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+}
+
+#moneh {
+  float: right;
+}
+#editKeg{
+  position: fixed;
+  bottom: 0px;
+  width: 97%;
+  background: silver;
+  margin: 20px;
+
+}
+#editKegInternal{
+  padding: 30px;
+}
+#newKegForm{
+  position: fixed;
+  bottom: 0px;
+  width: 97%;
+  background: silver;
+  margin: 20px;
+}
+#newKegFormInternal{
+  padding: 30px;
+
+}
+
+.vertical {
+  width: 100px;
+  height: 40px;
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}
+.vertical {
+  box-shadow: inset 0px 4px 6px #ccc;
+}
+.progress-bar {
+  box-shadow: inset 0px 4px 6px rgba(100,100,100,0.6);
 }

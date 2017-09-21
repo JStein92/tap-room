@@ -1,5 +1,6 @@
-export class Keg {
+let globalId : number = 0;
 
+export class Keg {
   pintsRemaining: number;
 
   constructor(
@@ -12,6 +13,7 @@ export class Keg {
       this.pintsRemaining = 124;
 
     }
+    public id : number = globalId++;
 
     pour() {
       this.pintsRemaining -= 1;
